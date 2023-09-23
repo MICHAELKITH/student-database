@@ -1,11 +1,13 @@
-<h1>
-    Listing all Students
+<h1>Listing all Students</h1>
+<%= link_to "New Student", new_student_path %>
+
     <table>
         <thead>
             <tr>
                 <th>First name </th>
                 <th>Last name </th>
                 <th>Email </th>
+                <th colspan="3">Actions</th>
 
             </tr>
         </thead>
@@ -15,9 +17,9 @@
                 <td><%= student.first_name %></td>
                 <td><%= student.last_name %></td>
                 <td><%= student.email %></td>
+                <td><%= link_to "View Details", student %></td>
             </tr>
             <%end%>
         </tbody>
 
     </table>
-</h1>

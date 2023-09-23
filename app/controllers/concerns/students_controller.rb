@@ -21,6 +21,15 @@ class StudentsController < ApplicationController
             render :new
         end
     end
+    def show
+        @student = Student.find_by(id: params[:id])
+      
+        if @student.nil?
+          flash[:alert] = "Student not found."
+          redirect_to students_path # Redirect to the index page or another appropriate page
+        end
+      end
+      
     private 
     def student_params
     params.require(:student).permit(:first_name, :last_name, :email)
