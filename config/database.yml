@@ -24,6 +24,10 @@ default: &default
 development:
   <<: *default
   database: student_database_development
+  host: localhost
+  username: postgres
+  password: slofile
+  port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -82,5 +86,4 @@ test:
 production:
   <<: *default
   database: student_database_production
-  username: student_database
-  password: slofile
+  
