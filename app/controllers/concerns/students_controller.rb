@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
-  def index
+  
+    before_action :set_student, only: %i[show edit update destroy]
+    def index
     @students = Student.all
   end
 
@@ -25,8 +27,7 @@ class StudentsController < ApplicationController
 
   # View new student
   def show
-    @student = Student.find_by(id: params[:id])
-
+    set_student
     if @student.nil?
       flash[:alert] = "Student not found."
       redirect_to students_path # Redirect to the index page or another appropriate page
@@ -34,11 +35,11 @@ class StudentsController < ApplicationController
   end
 
   def edit 
-    @student = Student.find_by(id: params[:id])
+    set_student
   end
 
   def update 
-    @student = Student.find_by(id: params[:id])
+    set_student
    if  @student.update(student_params)
     redirect_to student_path(@student)
    else
@@ -46,8 +47,7 @@ class StudentsController < ApplicationController
    end
   end
   def destroy
-    @student = Student.find_by(id: params[:id])
-  
+    set_student
     if @student
       @student.destroy
       redirect_to students_path
@@ -56,12 +56,15 @@ class StudentsController < ApplicationController
       redirect_to students_path 
     end
   end
-  
+
 
   #   Requirement params
   private
 
   def student_params
     params.require(:student).permit(:first_name, :last_name, :email)
+  end
+  def set_student
+    @student = Student.find_by(id: params[:id])
   end
 end
