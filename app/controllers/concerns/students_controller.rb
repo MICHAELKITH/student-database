@@ -37,6 +37,21 @@ class StudentsController < ApplicationController
     @student = Student.find_by(id: params[:id])
   end
 
+  def update 
+    @student = Student.find_by(id: params[:id])
+   if  @student.update(student_params)
+    redirect_to student_path(@student)
+   else
+    render :edit
+   end
+  end
+  def destroy
+    @student = Student.find_by(id: params[:id])
+    @student.destroy
+    redirect_to students_path
+    
+  end
+
   #   Requirement params
   private
 
