@@ -19,7 +19,7 @@ class StudentsController < ApplicationController
     )
 
     if @student.save()
-      redirect_to students_path
+      redirect_to students_path, notice: "Student created successfully!"
     else
       render :new
     end
@@ -41,7 +41,7 @@ class StudentsController < ApplicationController
   def update 
     set_student
    if  @student.update(student_params)
-    redirect_to student_path(@student)
+    redirect_to student_path(@student), notice: "Student updated successfully!"
    else
     render :edit
    end
@@ -50,7 +50,7 @@ class StudentsController < ApplicationController
     set_student
     if @student
       @student.destroy
-      redirect_to students_path
+      redirect_to students_path, notice: "Student deleted successfully!"
     else
       flash[:alert] = "Student not found."
       redirect_to students_path 
