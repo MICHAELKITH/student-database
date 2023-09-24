@@ -18,6 +18,7 @@
                 <td><%= student.last_name %></td>
                 <td><%= student.email %></td>
                 <td><%= link_to "View Details", student %></td>
+                <td><%= link_to "Update", edit_student_path(student) %></td>
             </tr>
             <%end%>
         </tbody>

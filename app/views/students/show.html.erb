@@ -4,4 +4,8 @@
 <p><strong>Last Name: </strong><%= @student.last_name %></p>
 <p><strong>Email: </strong><%= @student.email %></p>
 
-<%= link_to "All Students", students_path %>
+<%= link_to "All Students", students_path %> |
+<%= link_to "Update", edit_student_path(@student) %>
+
+
+
